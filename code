@@ -1,0 +1,42 @@
+import discord
+import asyncio
+
+client = discord.Client()
+client.login('terrathegod2@gmail.com', 'suckmyass123')
+client.change_status(game=discord.Game(name="Rhape"))
+
+@asyncio.coroutine
+@client.event
+def on_message(message):
+	# we do not want the bot to reply to itself
+	if message.author == client.user:
+		return
+		
+	elif message.author.id == "126868315355348992":
+		return
+
+	if message.content.startswith('!hello'):
+		client.send_message(message.channel, 'Hello {}!'.format(message.author.mention()))
+
+	if message.content.startswith('!command'):
+		client.send_message(message.channel, "Hi this is some random ass command")
+	
+	if message.content.startswith('!dresspics'):
+		client.send_message(message.channel, "http://puu.sh/m5QjF/9047cf1d0f.gif http://puu.sh/m5Qk0/f289bd863a.gif http://puu.sh/m5Qkc/c26f455cd9.gif https://www.youtube.com/watch?v=MpFBUwDhNO8")
+	
+	if message.content.startswith('!tithunt'):
+		client.send_message(message.channel, "http://puu.sh/myN1I/e4e4592cfd.jpg")
+	
+	if message.content.startswith('!goodnight'):
+		client.send_message(message.channel, 'Goodnight {}-sama!'.format(message.author.mention()))
+
+@asyncio.coroutine		
+@client.event
+def on_ready():
+	print('Logged in as')
+	print(client.user.name)
+	print(client.user.id)
+	print('------')
+	client.change_status(game=discord.Game(name="Rhape"))
+
+client.run()
